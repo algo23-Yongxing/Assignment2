@@ -1,0 +1,7 @@
+Final Balance: 999980.1586624354
+Cumulative Profit: -19.841337564603478
+Total Transaction Cost: 4.40744572
+Annualized Return: -1.5389543930321992e-06
+Sharpe Ratio: -3.2567387546422006
+Number of Long Trades: 1
+Number of Short Trades: 2
