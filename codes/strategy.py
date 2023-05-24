@@ -18,8 +18,11 @@ class DualMovingAverageBollingerStrategy:
         self.data['SMA_short'] = self.data['close'].rolling(window=self.short_window).mean()
         self.data['SMA_long'] = self.data['close'].rolling(window=self.long_window).mean()
         self.data['signal'] = 0
-        self.data.loc[self.data['SMA_short'] > self.data['SMA_long'], 'signal'] = 1
-        self.data.loc[self.data['SMA_short'] < self.data['SMA_long'], 'signal'] = -1
+        for i in range(1,len(self.data)):
+            if (self.data.loc[i-1,'SMA_short'] > self.data.loc[i-1,'SMA_long']) and (self.data.loc[i,'SMA_short'] < self.data.loc[i,'SMA_long']):
+                self.data.loc[i, 'signal'] = 1
+            elif (self.data.loc[i-1,'SMA_short'] < self.data.loc[i-1,'SMA_long']) and (self.data.loc[i,'SMA_short'] > self.data.loc[i,'SMA_long']):
+                self.data.loc[i, 'signal']
 
         # 计算布林带指标
         self.data['MA'] = self.data['close'].rolling(window=self.bollinger_window).mean()
